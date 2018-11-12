@@ -66,7 +66,8 @@ public class ReactVideoView extends ScalableVideoView implements
         EVENT_FULLSCREEN_WILL_PRESENT("onVideoFullscreenPlayerWillPresent"),
         EVENT_FULLSCREEN_DID_PRESENT("onVideoFullscreenPlayerDidPresent"),
         EVENT_FULLSCREEN_WILL_DISMISS("onVideoFullscreenPlayerWillDismiss"),
-        EVENT_FULLSCREEN_DID_DISMISS("onVideoFullscreenPlayerDidDismiss");
+        EVENT_FULLSCREEN_DID_DISMISS("onVideoFullscreenPlayerDidDismiss"),
+        EVENT_DETACH_From_WINDOW("onDetachedFromWindow");
 
         private final String mName;
 
@@ -690,6 +691,7 @@ public class ReactVideoView extends ScalableVideoView implements
         mMediaPlayerValid = false;
         super.onDetachedFromWindow();
         setKeepScreenOn(false);
+        mEventEmitter.receiveEvent(getId(), Events.EVENT_DETACH_From_WINDOW.toString(), null);
     }
 
     @Override

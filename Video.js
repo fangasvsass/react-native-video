@@ -178,6 +178,11 @@ export default class Video extends Component {
       this.props.onExternalPlaybackChange(event.nativeEvent);
     }
   }
+  _onDetachedFromWindow=(event)=>{
+    if (this.props.onDetachedFromWindow) {
+      this.props.onDetachedFromWindow(event.nativeEvent);
+    }
+  }
 
   _onAudioBecomingNoisy = () => {
     if (this.props.onAudioBecomingNoisy) {
@@ -243,6 +248,7 @@ export default class Video extends Component {
       onTimedMetadata: this._onTimedMetadata,
       onVideoAudioBecomingNoisy: this._onAudioBecomingNoisy,
       onVideoExternalPlaybackChange: this._onExternalPlaybackChange,
+      onDetachedFromWindow:this._onDetachedFromWindow,
       onVideoFullscreenPlayerWillPresent: this._onFullscreenPlayerWillPresent,
       onVideoFullscreenPlayerDidPresent: this._onFullscreenPlayerDidPresent,
       onVideoFullscreenPlayerWillDismiss: this._onFullscreenPlayerWillDismiss,
@@ -296,6 +302,7 @@ Video.propTypes = {
   onVideoFullscreenPlayerDidPresent: PropTypes.func,
   onVideoFullscreenPlayerWillDismiss: PropTypes.func,
   onVideoFullscreenPlayerDidDismiss: PropTypes.func,
+  onDetachedFromWindow:PropTypes.func
 
   /* Wrapper component */
   source: PropTypes.oneOfType([
