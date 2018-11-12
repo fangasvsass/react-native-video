@@ -302,7 +302,7 @@ Video.propTypes = {
   onVideoFullscreenPlayerDidPresent: PropTypes.func,
   onVideoFullscreenPlayerWillDismiss: PropTypes.func,
   onVideoFullscreenPlayerDidDismiss: PropTypes.func,
-  onDetachedFromWindow:PropTypes.func
+  onDetachedFromWindow:PropTypes.func,
 
   /* Wrapper component */
   source: PropTypes.oneOfType([
